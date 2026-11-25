@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/validation-key.txt", "destination": "/api/validation-key" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
