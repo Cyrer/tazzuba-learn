@@ -1,0 +1,536 @@
+{
+  "app": "Tazzuba Learn",
+  "tracks": [
+    {
+      "id": "stoic",
+      "name": "Stoic Mindset",
+      "series": "The Complete Stoic Series",
+      "lessons": [
+        {
+          "n": 1,
+          "title": "What you control",
+          "book": "The Stoic Code",
+          "idea": "Split every worry into two lists: what you control (your actions, words, effort) and what you don't (other people, the past, outcomes). Spend energy only on the first list.",
+          "action": "Write today's top worry and circle the one part you control.",
+          "quiz": {
+            "q": "Which of these is within your control?",
+            "options": [
+              "Your reply to a rude message",
+              "Whether it rains",
+              "What your boss thinks"
+            ],
+            "answer": 0
+          },
+          "free": true
+        },
+        {
+          "n": 2,
+          "title": "The morning review",
+          "book": "The Stoic Meditations",
+          "idea": "Marcus Aurelius began each day expecting difficult people, so they didn't shock him. Preparing for friction keeps you calm when it comes.",
+          "action": "Before work, name one hard moment you might face and how you'll respond.",
+          "quiz": {
+            "q": "Why prepare for difficult people in the morning?",
+            "options": [
+              "To avoid them",
+              "So their behaviour doesn't throw you off",
+              "To win arguments"
+            ],
+            "answer": 1
+          },
+          "free": true
+        },
+        {
+          "n": 3,
+          "title": "Pause before reacting",
+          "book": "The Stoic Mind",
+          "idea": "Between what happens and how you react there is a gap. Stoics train to widen it: breathe, judge the facts, then act.",
+          "action": "Next time you feel anger, count to ten before you speak.",
+          "quiz": {
+            "q": "What do Stoics train to widen?",
+            "options": [
+              "The gap between event and reaction",
+              "Their circle of friends",
+              "Their income"
+            ],
+            "answer": 0
+          },
+          "free": true
+        },
+        {
+          "n": 4,
+          "title": "Love your fate",
+          "book": "Amor Fati",
+          "idea": "Amor fati means accepting what happens and using it as material for growth, not wishing it away.",
+          "action": "Pick one setback this month. Write one thing it taught you.",
+          "quiz": {
+            "q": "Amor fati means…",
+            "options": [
+              "Ignoring problems",
+              "Loving and using what happens to you",
+              "Waiting for luck"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 5,
+          "title": "Your inner citadel",
+          "book": "The Inner Citadel",
+          "idea": "Your mind is a fortress no one can enter without your permission. Insults only hurt if you agree with them.",
+          "action": "When criticised today, ask: is it true? If yes, learn. If not, let it go.",
+          "quiz": {
+            "q": "According to the Inner Citadel idea, insults hurt when…",
+            "options": [
+              "They are loud",
+              "You agree with them",
+              "They come from strangers"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 6,
+          "title": "Hidden lessons in hardship",
+          "book": "The Stoic Secrets",
+          "idea": "Stoics practised discomfort on purpose, cold baths, simple meals, so that hard times felt familiar instead of frightening.",
+          "action": "Choose one small voluntary discomfort today: skip a treat or take the stairs.",
+          "quiz": {
+            "q": "Why practise small discomforts?",
+            "options": [
+              "To punish yourself",
+              "So real hardship feels less frightening",
+              "To save money only"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 7,
+          "title": "Daily discipline",
+          "book": "Daily Stoic Discipline",
+          "idea": "Discipline is not a mood; it's a system. Small daily routines beat big bursts of motivation.",
+          "action": "Set one 10-minute habit and do it at the same time every day this week.",
+          "quiz": {
+            "q": "What beats bursts of motivation?",
+            "options": [
+              "Small daily routines",
+              "Waiting to feel ready",
+              "Big New Year goals"
+            ],
+            "answer": 0
+          },
+          "free": false
+        },
+        {
+          "n": 8,
+          "title": "Stoic love",
+          "book": "The Stoic Love",
+          "idea": "Loving well means wanting the good of the other person, not controlling them. Give care freely; don't make it a trade.",
+          "action": "Do one kind act for someone close today without expecting anything back.",
+          "quiz": {
+            "q": "Stoic love is about…",
+            "options": [
+              "Controlling the other person",
+              "Wanting their good without making it a trade",
+              "Avoiding closeness"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 9,
+          "title": "The evening review",
+          "book": "The Stoic Meditations",
+          "idea": "Seneca reviewed each day at night: what did I do well, where did I fall short, what will I do better tomorrow?",
+          "action": "Tonight, answer those three questions in two minutes.",
+          "quiz": {
+            "q": "The evening review asks…",
+            "options": [
+              "What others did wrong",
+              "What I did well, where I fell short, what I'll improve",
+              "How much money I made"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 10,
+          "title": "Memento mori",
+          "book": "The Stoic Mind",
+          "idea": "Remembering life is short is not morbid; it sharpens priorities and stops you wasting days on small things.",
+          "action": "Ask: if I had one year left, what would I stop doing? Stop one thing this week.",
+          "quiz": {
+            "q": "Memento mori is used to…",
+            "options": [
+              "Feel afraid",
+              "Sharpen priorities",
+              "Avoid planning"
+            ],
+            "answer": 1
+          },
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": "lead",
+      "name": "Leadership",
+      "series": "The Modern Leadership Series",
+      "lessons": [
+        {
+          "n": 1,
+          "title": "Lead like you mean it",
+          "book": "Lead Like You Mean It",
+          "idea": "People follow leaders who show up consistently. Your behaviour on ordinary days builds more trust than speeches on big days.",
+          "action": "Keep one small promise to your team today, on time.",
+          "quiz": {
+            "q": "What builds trust most?",
+            "options": [
+              "Big speeches",
+              "Consistent behaviour on ordinary days",
+              "A big title"
+            ],
+            "answer": 1
+          },
+          "free": true
+        },
+        {
+          "n": 2,
+          "title": "Influence over authority",
+          "book": "Influence Over Authority",
+          "idea": "Authority makes people comply; influence makes them commit. Influence comes from listening, credibility and helping others win.",
+          "action": "Ask one team member what's blocking them and remove one obstacle.",
+          "quiz": {
+            "q": "Influence leads people to…",
+            "options": [
+              "Comply",
+              "Commit",
+              "Leave"
+            ],
+            "answer": 1
+          },
+          "free": true
+        },
+        {
+          "n": 3,
+          "title": "The empathic edge",
+          "book": "The Empathic Edge",
+          "idea": "Empathy is a performance tool: when people feel understood, they share problems early, before they become crises.",
+          "action": "In your next one-on-one, listen for two minutes before giving any advice.",
+          "quiz": {
+            "q": "Why is empathy a performance tool?",
+            "options": [
+              "People hide problems",
+              "People raise problems early",
+              "Meetings get longer"
+            ],
+            "answer": 1
+          },
+          "free": true
+        },
+        {
+          "n": 4,
+          "title": "From boss to beacon",
+          "book": "From Boss to Beacon",
+          "idea": "A boss checks work; a beacon shows the way. Set the direction clearly and people can find their own path to it.",
+          "action": "Write your team's goal for this month in one sentence and share it.",
+          "quiz": {
+            "q": "A beacon leader mainly…",
+            "options": [
+              "Checks every task",
+              "Shows clear direction",
+              "Avoids decisions"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 5,
+          "title": "The human side",
+          "book": "The Human Side of Leadership",
+          "idea": "In the age of AI, trust and emotional intelligence become a leader's edge, because they're the hardest things to automate.",
+          "action": "Thank one person specifically: name what they did and why it mattered.",
+          "quiz": {
+            "q": "What becomes a leader's edge in the age of AI?",
+            "options": [
+              "Typing speed",
+              "Trust and emotional intelligence",
+              "Working longer hours"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 6,
+          "title": "People over process",
+          "book": "People Over Process",
+          "idea": "Processes should serve people, not the other way round. When a rule blocks good work, fix the rule.",
+          "action": "Find one rule or step that slows your team for no reason and question it.",
+          "quiz": {
+            "q": "When a rule blocks good work, you should…",
+            "options": [
+              "Enforce it harder",
+              "Fix the rule",
+              "Ignore the team"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 7,
+          "title": "Delegate decisions, not tasks",
+          "book": "From Boss to Beacon",
+          "idea": "Give people ownership of decisions within clear limits, such as 'anything under 5 million is your call', and they'll move faster than if every approval waits for you.",
+          "action": "Set one decision limit for someone on your team this week.",
+          "quiz": {
+            "q": "Clear decision limits help teams…",
+            "options": [
+              "Wait for approvals",
+              "Move faster",
+              "Avoid responsibility"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 8,
+          "title": "The one true leader",
+          "book": "The One True Leader",
+          "idea": "The leader you are under pressure is the real one. Calm, fair behaviour in a crisis earns lasting loyalty.",
+          "action": "Recall your last crisis: what would you do differently? Write it down.",
+          "quiz": {
+            "q": "Your real leadership shows most…",
+            "options": [
+              "In good times",
+              "Under pressure",
+              "On social media"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 9,
+          "title": "Feedback that lands",
+          "book": "The Empathic Edge",
+          "idea": "Good feedback is specific, timely and about behaviour, not personality: 'the report was late' not 'you're lazy'.",
+          "action": "Give one piece of specific, kind feedback today.",
+          "quiz": {
+            "q": "Good feedback focuses on…",
+            "options": [
+              "Personality",
+              "Specific behaviour",
+              "Old mistakes"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 10,
+          "title": "The art of growth",
+          "book": "The Art of Growth",
+          "idea": "Great leaders grow people who can replace them. Your success is measured by how strong your team is without you.",
+          "action": "Teach someone one task you usually do yourself.",
+          "quiz": {
+            "q": "A leader's success is measured by…",
+            "options": [
+              "How busy they are",
+              "How strong the team is without them",
+              "How many approvals they give"
+            ],
+            "answer": 1
+          },
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": "hos",
+      "name": "Calm & Focus",
+      "series": "The Human Operating System Series",
+      "lessons": [
+        {
+          "n": 1,
+          "title": "Your human operating system",
+          "book": "Algorithmic Stoicism",
+          "idea": "Your habits are like code: they run automatically. Change the code and you change the results.",
+          "action": "List three habits that run your day. Mark one to rewrite.",
+          "quiz": {
+            "q": "Habits are compared to…",
+            "options": [
+              "Weather",
+              "Code that runs automatically",
+              "Luck"
+            ],
+            "answer": 1
+          },
+          "free": true
+        },
+        {
+          "n": 2,
+          "title": "The focus code",
+          "book": "The Focus Code",
+          "idea": "Focus is a resource that runs out. Protect your best hours for your hardest work and push meetings and messages later.",
+          "action": "Block 60 minutes tomorrow for one important task, phone away.",
+          "quiz": {
+            "q": "When should you do your hardest work?",
+            "options": [
+              "When you're tired",
+              "In your best-focus hours",
+              "Between meetings"
+            ],
+            "answer": 1
+          },
+          "free": true
+        },
+        {
+          "n": 3,
+          "title": "Human algorithms",
+          "book": "Human Algorithms",
+          "idea": "Simple rules decide faster than moods: 'if a task takes under 2 minutes, do it now.'",
+          "action": "Write one 'if X, then Y' rule for a decision you keep repeating.",
+          "quiz": {
+            "q": "Simple personal rules help you…",
+            "options": [
+              "Decide faster",
+              "Avoid all decisions",
+              "Work longer"
+            ],
+            "answer": 0
+          },
+          "free": true
+        },
+        {
+          "n": 4,
+          "title": "Calm under fire",
+          "book": "Calm Under Fire",
+          "idea": "When pressure hits, slow your breathing first. A calm body lets the thinking brain work.",
+          "action": "Practise 4-7-8 breathing once today: in 4, hold 7, out 8.",
+          "quiz": {
+            "q": "What should you do first under pressure?",
+            "options": [
+              "Shout instructions",
+              "Slow your breathing",
+              "Send many messages"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 5,
+          "title": "Inner algorithms",
+          "book": "Inner Algorithms",
+          "idea": "Your self-talk is a program. Replace 'I can't' with 'not yet' and your brain keeps searching for solutions.",
+          "action": "Catch one negative thought today and rewrite it.",
+          "quiz": {
+            "q": "Replacing 'I can't' with 'not yet'…",
+            "options": [
+              "Changes nothing",
+              "Keeps your brain searching for solutions",
+              "Makes you lazy"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 6,
+          "title": "The human bottleneck",
+          "book": "The Human Bottleneck",
+          "idea": "In most teams the slowest step is a person waiting for a decision, often the leader. Remove yourself as the bottleneck.",
+          "action": "Find one thing that waits on you and hand it over.",
+          "quiz": {
+            "q": "In most teams, the slowest step is often…",
+            "options": [
+              "The internet",
+              "A person waiting for a decision",
+              "The weather"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 7,
+          "title": "The systems leader",
+          "book": "The Systems Leader",
+          "idea": "Don't fix the same problem twice. When something goes wrong, fix the system that allowed it.",
+          "action": "Pick a repeated problem and write one change that stops it recurring.",
+          "quiz": {
+            "q": "A systems leader fixes…",
+            "options": [
+              "Only today's problem",
+              "The system that caused it",
+              "Nothing"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 8,
+          "title": "The calm team",
+          "book": "The Calm Team",
+          "idea": "Calm spreads. A leader's tone sets the team's stress level, so lower your voice when things heat up.",
+          "action": "In your next tense meeting, speak slower and softer than usual.",
+          "quiz": {
+            "q": "A leader's tone sets…",
+            "options": [
+              "The team's stress level",
+              "The company's profits only",
+              "Nothing"
+            ],
+            "answer": 0
+          },
+          "free": false
+        },
+        {
+          "n": 9,
+          "title": "Built for volatility",
+          "book": "Built for Volatility",
+          "idea": "You can't predict every shock, but you can build buffers: savings, backups, and people trained to cover for each other.",
+          "action": "Name one buffer you'll build this month: money, a backup person or a process.",
+          "quiz": {
+            "q": "How do you prepare for shocks you can't predict?",
+            "options": [
+              "Hope",
+              "Build buffers",
+              "Ignore risk"
+            ],
+            "answer": 1
+          },
+          "free": false
+        },
+        {
+          "n": 10,
+          "title": "Rest is a strategy",
+          "book": "The Focus Code",
+          "idea": "Sleep and breaks are not laziness; they restore focus. Tired brains make costly decisions.",
+          "action": "Set a fixed bedtime for this week and keep it.",
+          "quiz": {
+            "q": "Why is rest a strategy?",
+            "options": [
+              "It restores focus and decision quality",
+              "It wastes time",
+              "It avoids work"
+            ],
+            "answer": 0
+          },
+          "free": false
+        }
+      ]
+    }
+  ]
+}
