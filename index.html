@@ -81,10 +81,10 @@ footer a{color:var(--muted)}
 /* ---------- config ---------- */
 const CONFIG = {
   sandbox: false,                 // Production (Mainnet) app
-  subscriptionPi: 3,              // monthly price in Pi (placeholder until payments are switched on)
-  paymentsEnabled: false,         // turned on once the app wallet + server keys are set
+  subscriptionPi: 1,              // display only; the real price lives on the server
+  paymentsEnabled: true,
   tutorEnabled: false,            // turned on once the AI key is set on the server
-  shareBase: location.origin      // replace with the app's pi_url once verified
+  shareBase: 'https://tazzubalearnpuf6461.pinet.com'
 };
 
 /* ---------- state ---------- */
@@ -94,7 +94,9 @@ const store = {
   set(k, v){ try{ localStorage.setItem('tl_'+k, JSON.stringify(v)); }catch(e){} }
 };
 let progress = store.get('progress', {});     // { "stoic-1": true, ... }
-let premium  = store.get('premium', false);
+let pass     = store.get('pass', null);      // signed premium pass from the server
+let premium  = !!(pass && pass.expires > Date.now());
+let accessToken = null;                        // kept in memory only
 let streak   = store.get('streak', {count:0, last:null});
 
 const $ = s => document.querySelector(s);
@@ -105,29 +107,43 @@ function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('on
 const inPi = () => typeof window.Pi !== 'undefined';
 try { if (inPi()) Pi.init({ version: "2.0", sandbox: CONFIG.sandbox }); } catch(e) {}
 
+const post = (url, body) => fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)}).then(r => r.json());
+function savePass(p){ pass = p; premium = !!(p && p.expires > Date.now()); store.set('pass', p); }
+
 function onIncompletePaymentFound(payment){
-  // Hand an interrupted payment back to the server to finish it.
-  fetch('/api/payments/incomplete', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({payment})}).catch(()=>{});
+  // A payment was paid but never finished (e.g. the app closed). Let the server finish it.
+  post('/api/payments/incomplete', {payment}).then(j => {
+    if (j.premium && (!S.user || S.user.uid === j.uid)) { savePass({token:j.token, expires:j.expires}); render(); toast('Premium unlocked'); }
+  }).catch(()=>{});
 }
 
-async function signIn(){
-  if (!inPi()) { toast('Open Tazzuba Learn in Pi Browser to sign in'); return; }
+async function refreshPremium(){
+  if (!pass || !accessToken) return;
+  try { const j = await post('/api/entitlement', {token: pass.token, accessToken}); if (!j.premium) savePass(null); else savePass({token: pass.token, expires: j.expires}); render(); } catch(e) {}
+}
+
+async function signIn(quiet){
+  if (!inPi()) { if(!quiet) toast('Open Tazzuba Learn in Pi Browser to sign in'); return false; }
   const btn = $('#signin'); if (btn){ btn.disabled = true; btn.textContent = 'Signing in…'; }
   try {
-    const scopes = CONFIG.paymentsEnabled ? ['username','payments'] : ['username'];
+    const scopes = ['username','payments'];
     const auth = await Promise.race([
       Pi.authenticate(scopes, onIncompletePaymentFound),
       new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')), 20000))
     ]);
     const r = await fetch('/api/auth', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({accessToken: auth.accessToken})});
     if (!r.ok) throw new Error('verify failed');
-    S.user = await r.json();
+    const u = await r.json();
+    if (S.user && S.user.uid !== u.uid) savePass(null);   // different person on this device
+    S.user = u; accessToken = auth.accessToken;
     store.set('user', S.user);
-    toast('Welcome, @' + S.user.username);
-    go('tracks');
+    refreshPremium();
+    if (!quiet){ toast('Welcome, @' + S.user.username); go('tracks'); }
+    return true;
   } catch(e) {
-    toast(e.message === 'timeout' ? 'Sign-in timed out. Open the app in Pi Browser.' : 'Sign-in failed. Please try again.');
+    if (!quiet) toast(e.message === 'timeout' ? 'Sign-in timed out. Open the app in Pi Browser.' : 'Sign-in failed. Please try again.');
     if (btn){ btn.disabled = false; btn.textContent = 'Sign in with Pi'; }
+    return false;
   }
 }
 
@@ -231,8 +247,9 @@ function viewPaywall(){
     <p class="muted" style="margin-top:12px">All ${S.data.tracks.reduce((a,t)=>a+t.lessons.length,0)} lessons, every track, and unlimited questions to the AI tutor.</p>
     <div class="price">${CONFIG.subscriptionPi} π</div><div class="muted small">per month</div>
     <div class="stack" style="margin-top:24px">
-      <button class="btn btn-primary" id="pay" onclick="subscribe()">${CONFIG.paymentsEnabled ? 'Subscribe with Pi' : 'Coming soon'}</button>
+      <button class="btn btn-primary" id="pay" onclick="subscribe()">${premium ? 'You are Premium ✓' : 'Subscribe with Pi'}</button>
     </div>
+    ${premium && pass ? `<p class="small muted" style="margin-top:12px">Premium until ${new Date(pass.expires).toLocaleDateString()}</p>` : `<p class="small muted" style="margin-top:12px">One payment of ${CONFIG.subscriptionPi} π gives you 30 days. It does not renew by itself.</p>`}
   </section>${foot()}`;
 }
 
@@ -264,9 +281,25 @@ async function askTutor(){
 }
 
 async function subscribe(){
-  if (!CONFIG.paymentsEnabled){ toast('Subscriptions open soon'); return; }
-  if (!S.user){ toast('Sign in with Pi first'); go('home'); return; }
-  // Pi payment flow is wired in once the app wallet and server keys are configured.
+  if (premium){ go('tracks'); return; }
+  if (!inPi()){ toast('Open Tazzuba Learn in Pi Browser to subscribe'); return; }
+  if (!accessToken && !(await signIn(true))){ toast('Sign in with Pi first'); return; }
+  const btn = $('#pay'); if (btn){ btn.disabled = true; btn.textContent = 'Opening Pi wallet…'; }
+  const reset = () => { const b=$('#pay'); if(b){ b.disabled=false; b.textContent='Subscribe with Pi'; } };
+  try {
+    Pi.createPayment(
+      { amount: CONFIG.subscriptionPi, memo: 'Tazzuba Learn Premium (1 month)', metadata: { product: 'premium_month' } },
+      {
+        onReadyForServerApproval: (paymentId) => post('/api/payments/approve', {paymentId, accessToken}).then(j => { if (j.error) toast(j.error); }),
+        onReadyForServerCompletion: (paymentId, txid) => post('/api/payments/complete', {paymentId, txid, accessToken}).then(j => {
+          if (j.premium){ savePass({token:j.token, expires:j.expires}); toast('Premium unlocked. Enjoy!'); go('tracks'); }
+          else { toast(j.error || 'Could not finish the payment'); reset(); }
+        }),
+        onCancel: () => { toast('Payment cancelled'); reset(); },
+        onError: (err) => { toast('Payment error: ' + (err && err.message || 'try again')); reset(); }
+      }
+    );
+  } catch(e){ toast('Could not start the payment'); reset(); }
 }
 
 function invite(){
@@ -281,6 +314,7 @@ function invite(){
 S.user = store.get('user', null);
 if (S.user) S.view = 'tracks';
 render();
+if (S.user && inPi()) signIn(true);   // quietly refresh the Pi session (needed for payments)
 fetch('/lessons.json').then(r=>r.json()).then(d=>{ S.data=d; render(); }).catch(()=>{ $('#app').innerHTML = header()+'<p class="muted" style="padding:40px 0">Could not load lessons. Check your connection and reload.</p>'; });
 </script>
 </body>
